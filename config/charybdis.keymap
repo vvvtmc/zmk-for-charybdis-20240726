@@ -112,12 +112,12 @@
 
         Base {
             bindings = <
-&none  &none           &none           &none             &none                 &none    &none             &none                    &none           &none              &none                    &none
-&none  &mt NUMBER_1 Q  &mt NUMBER_2 W  &mt NUMBER_3 E    &mt NUMBER_4 R        &none    &none             &mt N7 U                 &mt N8 I        &mt N9 O           &mt N0 P                 &none
-&kp B  &mt PAGE_UP A   &kp S           &kp D             &mt LEFT_WIN F        &kp G    &mt LEFT_ARROW H  &mt DOWN_ARROW J         &mt UP_ARROW K  &mt RIGHT_ARROW L  &mt SEMICOLON PAGE_DOWN  &kp COMMA
-&none  &mt HOME Z      &mt F8 X        &mt TILDE C       &mt SQT V             &none    &none             &mt RIGHT_PARENTHESIS M  &mt N5 T        &mt NUMBER_6 N     &mt PERIOD Y             &none
-                                       &kp LEFT_CONTROL  &mt LEFT_SHIFT SPACE  &mo 1    &mo 1             &mt LEFT_ALT RETURN
-                                                         &none                 &none    &none
+&none  &none           &none               &none             &none                 &none    &none             &none                &none           &none              &none              &none
+&none  &mt NUMBER_1 Q  &mt NUMBER_2 W      &mt NUMBER_3 F    &mt NUMBER_4 P        &none    &none             &mt N7 L             &mt N8 U        &mt N9 Y           &mt N0 K           &none
+&kp B  &mt PAGE_UP A   &kp R               &kp S             &mt LEFT_WIN T        &kp D    &mt LEFT_ARROW H  &mt DOWN_ARROW N     &mt UP_ARROW E  &mt RIGHT_ARROW I  &mt ESCAPE O       &kp ESCAPE
+&none  &mt HOME Z      &mt SINGLE_QUOTE X  &mt TILDE C       &mt ESCAPE V          &none    &none             &mt ESCAPE M         &mt ESCAPE J    &mt ESC ESCAPE     &mt ESCAPE ESCAPE  &none
+                                           &kp LEFT_CONTROL  &mt LEFT_SHIFT SPACE  &mo 1    &mo 1             &mt LEFT_ALT RETURN
+                                                             &none                 &none    &none
             >;
 
             trackball-bindings = <&tmv_coarse>;
