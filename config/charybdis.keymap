@@ -23,54 +23,22 @@
     combos {
         compatible = "zmk,combos";
 
-        bspc_combo {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <31 32>;
-        };
-
-        MouseLClick {
-            bindings = <&mkp MB1>;
-            key-positions = <27 28>;
-        };
-
-        Esc {
-            bindings = <&mt LA(F4) ESCAPE>;
-            key-positions = <13 14>;
-        };
-
         princ_combo {
             bindings = <&princ>;
             key-positions = <19 20 21>;
+            timeout-ms = <30>;
         };
 
-        XC_to_Tab {
-            bindings = <&mt LA(LC(TAB)) TAB>;
-            key-positions = <26 27>;
+        Bluetooth_layer {
+            bindings = <&bootloader>;
+            key-positions = <13 22>;
+            timeout-ms = <30>;
+            layers = <2>;
         };
 
-        small_para_combo {
-            bindings = <&small_para>;
-            key-positions = <28 31>;
-        };
-
-        mid_brkt_combo {
-            bindings = <&mid_brkt>;
-            key-positions = <16 19>;
-        };
-
-        del_combo {
-            bindings = <&kp DELETE>;
-            key-positions = <31 33 32>;
-        };
-
-        mouse2 {
-            bindings = <&mkp MB2>;
-            key-positions = <43 44>;
-        };
-
-        quote_combo {
-            bindings = <&double_quote>;
-            key-positions = <40 43>;
+        Fn_layer_combo {
+            bindings = <&mo 3>;
+            key-positions = <50 51>;
         };
     };
 
@@ -102,6 +70,13 @@
             bindings = <&none &kp DQT &kp DQT &kp LEFT_ARROW>;
             label = "NEW_MACRO";
         };
+
+        big_brkt: big_brkt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT>;
+            label = "BIG_BRKT";
+        };
     };
 
     behaviors {
@@ -112,38 +87,60 @@
 
         Base {
             bindings = <
-&none  &none           &none               &none             &none                 &none    &none             &none                &none           &none              &none              &none
-&none  &mt NUMBER_1 Q  &mt NUMBER_2 W      &mt NUMBER_3 F    &mt NUMBER_4 P        &none    &none             &mt N7 L             &mt N8 U        &mt N9 Y           &mt N0 K           &none
-&kp B  &mt PAGE_UP A   &kp R               &kp S             &mt LEFT_WIN T        &kp D    &mt LEFT_ARROW H  &mt DOWN_ARROW N     &mt UP_ARROW E  &mt RIGHT_ARROW I  &mt ESCAPE O       &kp ESCAPE
-&none  &mt HOME Z      &mt SINGLE_QUOTE X  &mt TILDE C       &mt ESCAPE V          &none    &none             &mt ESCAPE M         &mt ESCAPE J    &mt ESC ESCAPE     &mt ESCAPE ESCAPE  &none
-                                           &kp LEFT_CONTROL  &mt LEFT_SHIFT SPACE  &mo 1    &mo 1             &mt LEFT_ALT RETURN
-                                                             &none                 &none    &none
+&none  &none       &none           &none         &none        &none    &none  &none        &none             &none                &none           &none
+&none  &kp Q       &kp W           &kp E         &kp R        &kp T    &kp Y  &kp U        &kp I             &kp O                &kp P           &none
+&none  &kp A       &kp S           &kp D         &kp F        &kp G    &kp H  &kp J        &kp K             &kp L                &kp SEMICOLON   &none
+&none  &mt LWIN Z  &mt LEFT_ALT X  &mt LSHIFT C  &mt LCTRL V  &kp B    &kp N  &mt LCTRL M  &mt LSHIFT COMMA  &mt LEFT_ALT PERIOD  &mt LWIN SLASH  &none
+                                   &none         &kp SPACE    &mo 1    &mo 2  &none
+                                                 &none        &none    &none
             >;
 
             trackball-bindings = <&tmv_coarse>;
         };
 
-        nLay {
+        NUM {
             bindings = <
-&trans  &trans          &trans        &trans          &trans           &trans               &trans   &trans           &trans           &trans           &trans         &trans
-&trans  &kp SLASH       &kp ASTERISK  &kp MINUS       &kp PLUS         &kp C_VOLUME_UP      &trans   &mt F7 NUMBER_7  &mt F8 NUMBER_8  &mt F9 NUMBER_9  &trans         &trans
-&trans  &kp LEFT_ARROW  &kp UP_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp C_VOLUME_DOWN    &kp DOT  &mt F4 NUMBER_4  &mt F5 NUMBER_5  &mt F6 NUMBER_6  &mt F10 N0     &trans
-&trans  &mo 2           &trans        &trans          &kp EQUAL        &trans               &trans   &mt F1 NUMBER_1  &mt F2 NUMBER_2  &mt F3 NUMBER_3  &kp BACKSLASH  &trans
-                                      &trans          &trans           &trans               &trans   &trans
-                                                      &trans           &trans               &trans
+&none          &none           &none                   &none             &none            &none          &none      &none               &none                &none                  &none            &none
+&none          &kp SLASH       &kp ASTERISK            &kp MINUS         &kp PLUS         &none          &none      &kp NUMBER_7        &kp NUMBER_8         &kp NUMBER_9           &kp PERCENT      &none
+&double_quote  &mkp MB2        &kp ENTER               &kp BACKSPACE     &mkp MB1         &small_para    &mid_brkt  &kp NUMBER_4        &kp N5               &kp NUMBER_6           &kp NUMBER_0     &big_brkt
+&none          &mt LWIN TILDE  &mt LEFT_ALT AMPERSAND  &mt LSHIFT CARET  &mt LCTRL EQUAL  &none          &none      &mt LCTRL NUMBER_1  &mt LSHIFT NUMBER_2  &mt LEFT_ALT NUMBER_3  &mt LWIN KP_DOT  &none
+                                                       &trans            &trans           &trans         &trans     &mt LA(F4) ESC
+                                                                         &none            &none          &none
             >;
 
             trackball-bindings = <&tmv_fine>;//精准指针
         };
 
+        NAV {
+            bindings = <
+&none            &none           &none          &none           &none                &none                &none   &none          &none           &none         &none          &none
+&none            &kp LC(MINUS)   &kp LC(PG_UP)  &kp LC(TAB)     &kp LC(EQUAL)        &none                &none   &kp BACKSLASH  &kp UNDERSCORE  &kp SQT       &kp LA(LS(D))  &none
+&kp C_VOLUME_UP  &kp LEFT_ARROW  &kp UP_ARROW   &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp C_VOLUME_DOWN    &trans  &mkp MB1       &kp BACKSPACE   &kp ENTER     &kp DELETE     &trans
+&none            &kp HOME        &kp PG_UP      &kp PAGE_DOWN   &kp END              &none                &none   &sk LCTRL      &sk LSHIFT      &sk LEFT_ALT  &sk LWIN       &none
+                                                &trans          &mt LA(LC(TAB)) TAB  &trans               &trans  &trans
+                                                                &none                &none                &none
+            >;
+        };
+
+        FN {
+            bindings = <
+&none  &none     &none         &none       &none      &none     &none   &none   &none   &none   &none    &none
+&none  &none     &none         &none       &none      &none     &none   &kp F7  &kp F8  &kp F9  &kp F11  &none
+&none  &none     &none         &none       &none      &none     &none   &kp F4  &kp F5  &kp F6  &kp F10  &none
+&none  &sk LWIN  &sk LEFT_ALT  &sk LSHIFT  &sk LCTRL  &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
+                               &trans      &trans     &trans    &trans  &trans
+                                           &none      &none     &none
+            >;
+        };
+
         Bluetooth {
             bindings = <
-&none  &none  &none  &none  &none  &none       &none  &none         &none         &none         &none        &none
-&none  &none  &none  &none  &none  &none       &none  &none         &none         &none         &none        &none
-&none  &none  &none  &none  &to 0  &mkp MB1    &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR   &kp A
-&none  &none  &none  &none  &none  &none       &none  &none         &none         &none         &bootloader  &none
-                     &none  &none  &none       &none  &none
-                            &none  &none       &none
+&none  &none  &none  &none  &none  &none    &none  &none         &none         &none         &none       &none
+&none  &none  &none  &none  &none  &none    &none  &none         &none         &none         &none       &none
+&none  &none  &none  &none  &none  &none    &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &none
+&none  &none  &none  &none  &none  &none    &none  &none         &none         &none         &none       &none
+                     &none  &none  &none    &none  &none
+                            &none  &none    &none
             >;
         };
     };
