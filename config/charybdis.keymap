@@ -37,7 +37,7 @@
         };
 
         Fn_layer_combo {
-            bindings = <&mo 3>;
+            bindings = <&sl 3>;
             key-positions = <50 51>;
         };
     };
@@ -91,7 +91,7 @@
 &none      &kp Q       &kp W           &kp E         &kp R        &none        &none       &kp U        &kp I         &kp O           &kp P       &none
 &kp SLASH  &kp A       &kp S           &kp D         &kp F        &kp COMMA    &kp PERIOD  &kp J        &kp K         &kp L           &kp H       &kp SEMICOLON
 &none      &mt LWIN Z  &mt LEFT_ALT X  &mt LSHIFT C  &mt LCTRL V  &none        &none       &mt LCTRL M  &mt LSHIFT G  &mt LEFT_ALT Y  &mt LWIN B  &none
-                                       &kp N         &kp SPACE    &mo 1        &mo 2       &kp T
+                                       &kp N         &kp SPACE    &sl 1        &sl 2       &kp T
                                                      &none        &none        &none
             >;
 
